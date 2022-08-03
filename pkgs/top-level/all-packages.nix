@@ -19350,7 +19350,9 @@ with pkgs;
 
   libmysofa = callPackage ../development/libraries/audio/libmysofa { };
 
-  libmysqlconnectorcpp = callPackage ../development/libraries/libmysqlconnectorcpp { };
+  libmysqlconnectorcpp = callPackage ../development/libraries/libmysqlconnectorcpp {
+    openssl = openssl_1_1;
+  };
 
   libnatpmp = callPackage ../development/libraries/libnatpmp { };
 
