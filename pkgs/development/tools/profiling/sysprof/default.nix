@@ -57,6 +57,8 @@ stdenv.mkDerivation rec {
 
   mesonFlags = [
     "-Dsystemdunitdir=lib/systemd/system"
+    # In a separate libsysprof-capture package
+    "-Dinstall-static=false"
   ];
 
   passthru = {
