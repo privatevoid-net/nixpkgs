@@ -86,7 +86,6 @@ stdenv.mkDerivation rec {
   buildInputs = [
     glib
     libsoup_3
-    libxml2
     gtk3
     gnome-online-accounts
     gcr_4
@@ -117,6 +116,7 @@ stdenv.mkDerivation rec {
     libical
     libgdata # needed for GObject inspection, https://gitlab.gnome.org/GNOME/evolution-data-server/-/merge_requests/57/diffs
     libsoup_3
+    libxml2
   ];
 
   cmakeFlags = [
