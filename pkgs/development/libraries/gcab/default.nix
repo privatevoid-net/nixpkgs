@@ -8,7 +8,6 @@
 , pkg-config
 , meson
 , ninja
-, git
 , vala
 , glib
 , zlib
@@ -35,7 +34,6 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [
     meson
     ninja
-    git
     pkg-config
     vala
     gettext
