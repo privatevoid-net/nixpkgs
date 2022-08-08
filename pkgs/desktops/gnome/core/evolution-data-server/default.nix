@@ -41,7 +41,6 @@
 , libphonenumber
 , gnome-online-accounts
 , libgweather
-, libgdata
 , gsettings-desktop-schemas
 , boost
 , protobuf
@@ -91,7 +90,6 @@ stdenv.mkDerivation rec {
     gcr_4
     p11-kit
     libgweather
-    libgdata
     libaccounts-glib
     json-glib
     icu
@@ -114,7 +112,6 @@ stdenv.mkDerivation rec {
     nss
     nspr
     libical
-    libgdata # needed for GObject inspection, https://gitlab.gnome.org/GNOME/evolution-data-server/-/merge_requests/57/diffs
     libsoup_3
     libxml2
   ];
