@@ -1,4 +1,5 @@
-{ lib, stdenv
+{ stdenv
+, lib
 , fetchurl
 , at-spi2-core
 , babl
@@ -7,10 +8,9 @@
 , dleyna-renderer
 , gdk-pixbuf
 , gegl
-, geocode-glib
+, geocode-glib_2
 , gettext
 , gexiv2
-, gfbgraph
 , glib
 , gnome-online-accounts
 , gnome
@@ -21,8 +21,8 @@
 , gtk3
 , itstool
 , libdazzle
+, libportal-gtk3
 , libhandy
-, libgdata
 , libxml2
 , meson
 , ninja
@@ -73,9 +73,8 @@ stdenv.mkDerivation rec {
     dleyna-renderer
     gdk-pixbuf
     gegl
-    geocode-glib
+    geocode-glib_2
     gexiv2
-    gfbgraph
     glib
     gnome-online-accounts
     grilo
@@ -83,8 +82,8 @@ stdenv.mkDerivation rec {
     gsettings-desktop-schemas
     gtk3
     libdazzle
+    libportal-gtk3
     libhandy
-    libgdata
     tracker
     tracker-miners # For 'org.freedesktop.Tracker.Miner.Files' GSettings schema
 
