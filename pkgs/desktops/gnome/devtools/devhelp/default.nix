@@ -12,7 +12,7 @@
 , gobject-introspection
 , python3
 , gi-docgen
-, webkitgtk
+, webkitgtk_4_1
 , gettext
 , itstool
 , gsettings-desktop-schemas
@@ -46,7 +46,7 @@ stdenv.mkDerivation rec {
   buildInputs = [
     glib
     gtk3
-    webkitgtk
+    webkitgtk_4_1
     gnome.adwaita-icon-theme
     gsettings-desktop-schemas
   ];
