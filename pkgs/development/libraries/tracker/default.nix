@@ -13,7 +13,6 @@
 , libxml2
 , glib
 , wrapGAppsNoGuiHook
-, vala
 , sqlite
 , libxslt
 , libstemmer
@@ -50,7 +49,6 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [
     meson
     ninja
-    vala
     pkg-config
     asciidoc
     gettext
