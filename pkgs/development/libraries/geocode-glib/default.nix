@@ -18,13 +18,13 @@
 
 stdenv.mkDerivation rec {
   pname = "geocode-glib";
-  version = "3.26.3";
+  version = "3.26.4";
 
   outputs = [ "out" "dev" "devdoc" "installedTests" ];
 
   src = fetchurl {
     url = "mirror://gnome/sources/geocode-glib/${lib.versions.majorMinor version}/geocode-glib-${version}.tar.xz";
-    sha256 = "Hf6ug7kOzMobbPfc98XjsxeCjPC1YgXERx7w+RGZl2Y=";
+    sha256 = "LZpoJtFYRwRJoXOHEiFZbaD4Pr3P+YuQxwSQiQVqN6o=";
   };
 
   patches = [
