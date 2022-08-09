@@ -38,7 +38,13 @@ stdenv.mkDerivation rec {
     sha256 = "bmJsVk41S82MOEuQ+OTzCzA6+mweDLXMVroUkAxdtzA=";
   };
 
-  cargoVendorDir = "vendor";
+  cargoDeps = rustPlatform.fetchCargoTarball {
+    inherit src;
+    name = "${pname}-${version}";
+    hash = "sha256-tvfdRGyrEkEh6sb69f0ugfzR2bgGdWa05pSyovpXAF8=";
+    # TODO: move this to fetchCargoTarball
+    dontConfigure = true;
+  };
 
   strictDeps = true;
 
