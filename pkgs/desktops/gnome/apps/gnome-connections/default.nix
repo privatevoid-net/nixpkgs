@@ -4,7 +4,7 @@
 , meson
 , ninja
 , pkg-config
-, vala_0_56
+, vala
 , gettext
 , itstool
 , python3
@@ -34,7 +34,7 @@ stdenv.mkDerivation rec {
     meson
     ninja
     pkg-config
-    vala_0_56
+    vala
     gettext
     itstool
     python3
