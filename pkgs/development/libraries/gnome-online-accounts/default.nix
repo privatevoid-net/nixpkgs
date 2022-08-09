@@ -1,7 +1,6 @@
 { stdenv
 , lib
 , fetchFromGitLab
-, fetchpatch
 , pkg-config
 , vala
 , glib
@@ -45,14 +44,6 @@ stdenv.mkDerivation rec {
     rev = version;
     sha256 = "sha256-ST8hHMBCURI78HcT3iGL5D+O/v4gdqxToTanXWI4/Vw=";
   };
-
-  patches = [
-    # https://gitlab.gnome.org/GNOME/gnome-online-accounts/-/merge_requests/95
-    (fetchpatch {
-      url = "https://gitlab.gnome.org/GNOME/gnome-online-accounts/-/commit/2da899c48795e9941661f3eb06fc4fc04ec7b0fa.patch";
-      sha256 = "5qDiKnX9gx7eo//Qxa0+M9rsFKpg8dplA3IUZHuacmA=";
-    })
-  ];
 
   mesonFlags = [
     "-Dfedora=false" # not useful in NixOS or for NixOS users.
