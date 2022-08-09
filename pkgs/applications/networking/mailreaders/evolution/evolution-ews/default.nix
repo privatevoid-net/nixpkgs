@@ -8,10 +8,10 @@
 , pkg-config
 , evolution-data-server
 , evolution
-, sqlite
 , gtk3
-, webkitgtk_4_1
-, libgdata
+, libsoup_3
+, libical
+, json-glib
 , libmspack
 }:
 
@@ -34,16 +34,14 @@ stdenv.mkDerivation rec {
   buildInputs = [
     evolution-data-server
     evolution
-    sqlite
-    libgdata
     gtk3
-    webkitgtk_4_1
+    libsoup_3
+    libical
+    json-glib
     libmspack
   ];
 
   cmakeFlags = [
-    # Building with libmspack as recommended: https://wiki.gnome.org/Apps/Evolution/Building#Build_evolution-ews
-    "-DWITH_MSPACK=ON"
     # don't try to install into ${evolution}
     "-DFORCE_INSTALL_PREFIX=ON"
   ];
