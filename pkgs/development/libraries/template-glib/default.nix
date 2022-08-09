@@ -50,6 +50,8 @@ stdenv.mkDerivation rec {
     "-Dgtk_doc=true"
   ];
 
+  doCheck = true;
+
   passthru = {
     updateScript = gnome.updateScript {
       packageName = pname;
