@@ -34,7 +34,7 @@
 , nspr
 , icu
 , libcanberra-gtk3
-, geocode-glib
+, geocode-glib_2
 , cmark
 , bogofilter
 , gst_all_1
@@ -81,7 +81,7 @@ stdenv.mkDerivation rec {
     highlight
     icu
     libcanberra-gtk3
-    geocode-glib
+    geocode-glib_2
     cmark
     libgdata
     libgweather
