@@ -122,13 +122,6 @@ stdenv.mkDerivation rec {
 
   doCheck = true;
 
-  postPatch = ''
-    # Drop after https://gitlab.gnome.org/GNOME/gnome-builder/-/merge_requests/609
-    patchShebangs build-aux/meson/post_install.py
-    substituteInPlace build-aux/meson/post_install.py \
-      --replace "gtk-update-icon-cache" "gtk4-update-icon-cache"
-  '';
-
   checkPhase = ''
     export NO_AT_BRIDGE=1
     xvfb-run -s '-screen 0 800x600x24' dbus-run-session \
