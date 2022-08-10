@@ -97,6 +97,17 @@ let
         };
       };
 
+      kanidm = {
+        enable = mkOption {
+          default = config.services.kanidm.enablePam;
+          defaultText = literalExpression "config.services.kanidm.enablePam";
+          type = types.bool;
+          description = ''
+            If set, allow users managed by kanidm to login.
+          '';
+        };
+      };
+
       usbAuth = mkOption {
         default = config.security.pam.usb.enable;
         defaultText = literalExpression "config.security.pam.usb.enable";
@@ -442,7 +453,7 @@ let
         (
           ''
             # Account management.
-            account required pam_unix.so
+            account required pam_unix.so${optionalString cfg.kanidm.enable " broken_shadow"}
           '' +
           optionalString use_ldap ''
             account sufficient ${pam_ldap}/lib/security/pam_ldap.so
@@ -511,6 +522,7 @@ let
               || cfg.pamMount
               || cfg.enableKwallet
               || cfg.enableGnomeKeyring
+              || cfg.kanidm.enable
               || cfg.googleAuthenticator.enable
               || cfg.gnupg.enable
               || cfg.duoSecurity.enable))
@@ -533,13 +545,17 @@ let
               optionalString cfg.gnupg.enable ''
                 auth optional ${pkgs.pam_gnupg}/lib/security/pam_gnupg.so ${optionalString cfg.gnupg.storeOnly " store-only"}
               '' +
-              optionalString cfg.googleAuthenticator.enable ''
-                auth required ${pkgs.google-authenticator}/lib/security/pam_google_authenticator.so no_increment_hotp
-              '' +
               optionalString cfg.duoSecurity.enable ''
                 auth required ${pkgs.duo-unix}/lib/security/pam_duo.so
               ''
             )) +
+          optionalString cfg.googleAuthenticator.enable ''
+            auth required ${pkgs.googleAuthenticator}/lib/security/pam_google_authenticator.so nullok no_increment_hotp
+            auth sufficient pam_permit.so
+          '' +
+          optionalString cfg.kanidm.enable ''
+            auth sufficient ${pkgs.kanidm}/lib/pam_kanidm.so ignore_unknown_user
+          '' +
           optionalString cfg.unixAuth ''
             auth sufficient pam_unix.so ${optionalString cfg.allowNullPassword "nullok"} ${optionalString cfg.nodelay "nodelay"} likeauth try_first_pass
           '' +
@@ -574,6 +590,9 @@ let
           '' +
           optionalString config.services.sssd.enable ''
             password sufficient ${pkgs.sssd}/lib/security/pam_sss.so use_authtok
+          '' +
+          optionalString cfg.kanidm.enable ''
+            password optional ${pkgs.kanidm}/lib/pam_kanidm.so
           '' +
           optionalString config.krb5.enable ''
             password sufficient ${pam_krb5}/lib/security/pam_krb5.so use_first_pass
@@ -612,6 +631,9 @@ let
           optionalString cfg.pamMount ''
             session [success=1 default=ignore] ${pkgs.pam}/lib/security/pam_succeed_if.so service = systemd-user quiet
             session optional ${pkgs.pam_mount}/lib/security/pam_mount.so disable_interactive
+          '' +
+          optionalString cfg.kanidm.enable ''
+            session optional ${pkgs.kanidm}/lib/pam_kanidm.so
           '' +
           optionalString use_ldap ''
             session optional ${pam_ldap}/lib/security/pam_ldap.so
