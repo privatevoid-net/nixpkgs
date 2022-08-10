@@ -8,7 +8,7 @@
 , gtk3
 , atk
 , gobject-introspection
-, spidermonkey_91
+, spidermonkey_102
 , pango
 , cairo
 , readline
@@ -62,7 +62,7 @@ in stdenv.mkDerivation rec {
     cairo
     readline
     libsysprof-capture
-    spidermonkey_91
+    spidermonkey_102
     dbus # for dbus-run-session
   ];
 
