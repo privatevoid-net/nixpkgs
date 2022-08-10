@@ -15,7 +15,7 @@
 , gnome
 , glib
 , pkg-config
-, intltool
+, gettext
 , itstool
 , libxml2
 }:
@@ -37,7 +37,7 @@ stdenv.mkDerivation rec {
     gobject-introspection
     wrapGAppsHook
     itstool
-    intltool
+    gettext
   ];
 
   buildInputs = [
