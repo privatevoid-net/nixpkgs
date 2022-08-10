@@ -15,6 +15,7 @@
 , icu
 , itstool
 , libadwaita
+, editorconfig-core-c
 , libxml2
 , pcre
 , appstream-glib
@@ -50,6 +51,7 @@ stdenv.mkDerivation rec {
     gtk4
     gtksourceview5
     libadwaita
+    editorconfig-core-c
     pcre
   ];
 
