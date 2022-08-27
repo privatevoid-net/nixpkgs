@@ -36,7 +36,14 @@
           );
       });
 
-      checks.x86_64-linux.tarball = jobs.tarball;
+      checks.x86_64-linux = let pkgs = self.legacyPackages.x86_64-linux; in {
+        tarball = jobs.tarball;
+        inherit (pkgs)
+          bcachefs-tools
+          linux_testing_bcachefs
+        ;
+        nixosTests-bcachefs = pkgs.nixosTests.bcachefs;
+      };
 
       htmlDocs = {
         nixpkgsManual = jobs.manual;
