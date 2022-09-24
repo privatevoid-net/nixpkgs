@@ -28,7 +28,7 @@ stdenv.mkDerivation {
     owner = "koverstreet";
     repo = "bcachefs-tools";
     rev = "7af94e14b5a9945c28a3c34e58b920e81c696a53";
-    sha256 = "sha256-F95S4TC3tlmFRQTPxG88tydfOn1VLFsh8xzFUSP9Xhk=";
+    sha256 = "sha256-+BzkDqwylly+l4uYa9d9N9LpmBKSfd7MT+qxTS46npo=";
   };
 
   postPatch = ''
