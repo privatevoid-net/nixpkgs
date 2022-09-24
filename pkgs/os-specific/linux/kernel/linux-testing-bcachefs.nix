@@ -4,7 +4,7 @@
 , kernel
 , date ? "2022-09-24"
 , commit ? "e46b9641edd5ed1825f344dbc78cbaea17c8e250"
-, diffHash ? "sha256-HA5wkPRhcCJWe8RvWjWoh3lDjtnYFXFdPESYCzWCovw="
+, diffHash ? "sha256-85HKEozzPdFb/VsISVHAM42fTIlUr+GEP09BJHBjEXo="
 , kernelPatches # must always be defined in bcachefs' all-packages.nix entry because it's also a top-level attribute supplied by callPackage
 , argsOverride ? {}
 , ...
